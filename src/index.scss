@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  line-height: 1.5;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  outline: none;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+}
+.container {
+  max-width: 1120px;
+  padding: 0 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.slick-prev {
+  left: -35px;
+}
+.slick-next:before,
+.slick-prev:before {
+  color: black;
+  font-size: 30px;
+}
+.dropdown-item {
+  display: none;
+}
+.dropdown:hover .dropdown-item {
+  display: block;
+}
