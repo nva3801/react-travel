@@ -8,6 +8,8 @@ module.exports = {
       },
       colors: {
         primary: "#ffb300",
+        secondary: "#FF002C",
+        text: "#05558a",
       },
       screens: {
         "2xl": { max: "1535px" },

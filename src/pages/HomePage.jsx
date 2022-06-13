@@ -1,16 +1,15 @@
 import React, { Fragment } from "react";
+import { Footer, Header } from "../components/layout";
 import {
   Content,
   Countdown,
-  Footer,
-  Header,
   Library,
   Popular,
   Reason,
   Sale,
   Slider,
   Success,
-} from "../components/layout";
+} from "../modules/Home";
 
 const HomePage = () => {
   return (
