@@ -5,6 +5,8 @@ import SignInPage from "./pages/SignInPage";
 import CategoryPage from "./pages/CategoryPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProductPage from "./pages/ProductPage";
+import DashboardPage from "./pages/DashboardPage";
+import AddCategory from "./modules/Category/AddCategory";
 
 function App() {
   return (
@@ -16,6 +18,10 @@ function App() {
         <Route path="/category" element={<CategoryPage></CategoryPage>}></Route>
         <Route path="/product" element={<ProductPage></ProductPage>}></Route>
         <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
+        <Route
+          path="/dashboard"
+          element={<DashboardPage></DashboardPage>}
+        ></Route>
       </Routes>
     </div>
   );

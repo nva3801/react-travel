@@ -1,6 +1,10 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
 const Content = () => {
+  const [toggleState, setToggleState] = useState(1);
+  const toggleTab = (index) => {
+    setToggleState(index);
+  };
   return (
     <section className="content">
       <div className="container">
@@ -81,6 +85,75 @@ const Content = () => {
                   alt=""
                   className="duration-300 ease-in cursor-pointer hover:scale-[1.1]"
                 />
+              </div>
+            </div>
+            <div className="flex mt-6 text-base border-b border-b-black">
+              <div
+                className={
+                  toggleState === 1
+                    ? "px-5 py-2 tabs-active"
+                    : " px-5 py-2 tabs"
+                }
+                onClick={() => toggleTab(1)}
+              >
+                Chương trình tour
+              </div>
+              <div
+                className={
+                  toggleState === 2 ? "px-5 py-2 tabs-active" : "px-5 py-2 tabs"
+                }
+                onClick={() => toggleTab(2)}
+              >
+                Chính sách tour
+              </div>
+              <div
+                className={
+                  toggleState === 3
+                    ? "px-5 py-2 tabs-active"
+                    : " px-5 py-2 tabs"
+                }
+                onClick={() => toggleTab(3)}
+              >
+                Câu hỏi thường gặp
+              </div>
+            </div>
+            <div className="mt-4 content-tabs">
+              <div
+                className={
+                  toggleState === 1
+                    ? "content-item content-active"
+                    : "content-item"
+                }
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Necessitatibus temporibus sunt facere magnam aut praesentium
+                quas aliquid est beatae dicta, maxime sapiente laboriosam!
+                Tempore quas magnam velit vel adipisci nostrum!
+              </div>
+              <div
+                className={
+                  toggleState === 2
+                    ? "content-item content-active"
+                    : "content-item"
+                }
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </div>
+              <div
+                className={
+                  toggleState === 3
+                    ? "content-item content-active"
+                    : "content-item"
+                }
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Necessitatibus temporibus sunt facere magnam aut praesentium
+                quas aliquid est beatae dicta, maxime sapiente laboriosam!
+                Tempore quas magnam velit vel adipisci nostrum! Lorem ipsum
+                dolor sit amet consectetur adipisicing elit. Delectus, minus
+                corporis! Tempore, eaque! Vel incidunt necessitatibus nemo
+                mollitia animi quidem cum impedit magnam in explicabo sunt,
+                tempore aperiam ab dolorem!
               </div>
             </div>
           </div>
@@ -166,6 +239,30 @@ const Content = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="mt-10">
+          <span className="pb-1 italic font-bold border-b text-text border-b-text">
+            Thông tin về bảo hiểm du lịch
+          </span>
+          <div className="flex flex-col gap-3 mt-4 text-base">
+            <p>
+              Công ty TNHH Một Thành Viên Dịch vụ Lữ hành Saigontourist thực
+              hiện chương trình TẶNG MIỄN PHÍ BẢO HIỂM DU LỊCH NỘI ĐỊA dành cho
+              tất cả du khách của Công ty và các chi nhánh trực thuộc tham gia
+              tour trọn gói trên tất cả các tuyến du lịch nội địa, khởi hành
+              trên toàn quốc, với mức bảo hiểm tối đa lên đến 150.000.000
+              VNĐ/khách/vụ.{" "}
+            </p>
+            <p>
+              Toàn bộ phí bảo hiểm được tặng miễn phí cho khách hàng của Lữ hành
+              Saigontourist với chương trình, giá và chất lượng dịch vụ tour
+              không đổi.
+            </p>
+            <p>
+              Thông tin chi tiết, vui lòng liên hệ các văn phòng thuộc Hệ thống
+              Lữ hành Saigontourist trên toàn quốc.
+            </p>
           </div>
         </div>
       </div>

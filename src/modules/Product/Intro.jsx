@@ -9,7 +9,7 @@ const Intro = () => {
           alt=""
           className="object-cover w-full h-full"
         />
-        <div className="absolute bottom-0 w-full left-10 ">
+        <div className="absolute bottom-0 w-full -translate-x-1/2 left-1/2 ">
           <div className="container">
             <div className="bg-[#00000080] py-4 px-6 rounded-t-lg">
               <h1 className="my-4 text-4xl font-bold text-white uppercase">

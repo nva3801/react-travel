@@ -7,15 +7,15 @@ const Intro = () => {
         <img
           src="https://media.mia.vn/uploads/blog-du-lich/ve-tham-thap-rua-bieu-tuong-du-lich-tam-linh-giua-long-ha-noi-03-1640113393.jpg"
           alt=""
-          className="w-full h-full object-cover"
+          className="object-cover w-full h-full"
         />
-        <div className="absolute w-full bottom-0 left-10 ">
+        <div className="absolute bottom-0 w-full -translate-x-1/2 left-1/2 ">
           <div className="container">
             <div className="bg-[#00000080] py-4 px-6 rounded-t-lg">
-              <h1 className="text-white text-4xl font-bold uppercase my-4">
+              <h1 className="my-4 text-4xl font-bold text-white uppercase">
                 Tour Hà nội
               </h1>
-              <p className="text-white text-base">
+              <p className="text-base text-white">
                 Du lịch Hà Nội. Hành trình khám phá thủ đô Hà Nội nơi lưu giữ
                 biết bao tinh hoa của dân tộc, lưu dấu nhiều di tích như Hồ
                 Gươm, Chùa Quán Sứ, Hồ Tây, 36 phố phường. Hà Nội còn được biết

@@ -63,9 +63,7 @@ const Header = () => {
                     }`}
                   >
                     <div className="flex flex-col w-1/3">
-                      <a href="" className="">
-                        Du lịch miền bắc
-                      </a>
+                      <NavLink to="/category">Du lịch miền bắc</NavLink>
                       <a
                         href=""
                         className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2"

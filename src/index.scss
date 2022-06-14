@@ -67,3 +67,28 @@ body {
 .dropdown:hover .dropdown-item {
   display: block;
 }
+.tabs {
+  font-weight: bold;
+}
+.tabs-active {
+  border: 1px solid black;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  color: #ffb300;
+  font-weight: bold;
+}
+.tabs:hover {
+  background: #f1f1f1;
+  color: #ffb300;
+  font-weight: bold;
+  transition: 0.3s linear;
+  cursor: pointer;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.content-item {
+  display: none;
+}
+.content-active {
+  display: block;
+}
