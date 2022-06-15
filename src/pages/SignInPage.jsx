@@ -22,7 +22,7 @@ const SignInPage = () => {
     });
   };
   return (
-    <div className="h-[100vh] flex items-center justify-center flex-col">
+    <div className="h-[100vh] flex items-center justify-center flex-col md:px-5">
       <div className="max-w-[700px] mx-auto text-center">
         <form onSubmit={handleSubmit(handleSignUp)}>
           <NavLink to="/" className="w-full">
