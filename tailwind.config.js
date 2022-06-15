@@ -10,6 +10,8 @@ module.exports = {
         primary: "#ffb300",
         secondary: "#FF002C",
         text: "#05558a",
+        grayDark: "#292D32",
+        grayLight: "#E7ECF3",
       },
       screens: {
         "2xl": { max: "1535px" },

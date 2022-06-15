@@ -42,24 +42,12 @@ const data = [
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block" }}
-      onClick={onClick}
-    />
-  );
+  return <div className={`${className} md:hidden`} onClick={onClick} />;
 }
 
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block" }}
-      onClick={onClick}
-    />
-  );
+  return <div className={`${className} md:hidden`} onClick={onClick} />;
 }
 
 const Library = () => {

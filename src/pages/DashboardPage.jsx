@@ -6,7 +6,7 @@ const DashboardPage = () => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     getAllCategory();
-  });
+  }, []);
 
   const getAllCategory = async () => {
     const response = await axios.get(`${link}/category`);
