@@ -8,22 +8,22 @@ const Content = () => {
   return (
     <section className="content">
       <div className="container">
-        <div className="flex">
-          <div className="w-3/4">
-            <div className="flex flex-wrap ">
-              <div className="flex w-1/2 pb-1 text-base gap-x-1">
+        <div className="flex md:inline-block">
+          <div className="w-3/4 md:w-full">
+            <div className="flex flex-wrap md:inline-block">
+              <div className="flex w-1/2 pb-1 text-base gap-x-1 md:w-full">
                 <span className="uppercase">thời gian:</span>
                 <span className="font-bold">1 ngày</span>
               </div>
-              <div className="flex w-1/2 pb-1 text-base gap-x-1 ">
+              <div className="flex w-1/2 pb-1 text-base gap-x-1 md:w-full">
                 <span className="uppercase">PHƯƠNG TIỆN:</span>
                 <span className="font-bold">Đi về bằng ôtô</span>
               </div>
-              <div className="flex w-1/2 pb-1 text-base gap-x-1 ">
+              <div className="flex w-1/2 pb-1 text-base gap-x-1 md:w-full">
                 <span className="uppercase">ĐIỂM XUẤT PHÁT:</span>
                 <span className="font-bold">Hải Phòng</span>
               </div>
-              <div className="flex w-1/2 pb-1 text-base gap-x-1 ">
+              <div className="flex w-1/2 pb-1 text-base gap-x-1 md:w-full">
                 <span className="uppercase">ĐIỂM ĐẾN:</span>
                 <span className="font-bold">Hạ Long</span>
               </div>
@@ -58,28 +58,28 @@ const Content = () => {
               </a>
             </div>
             <div className="flex flex-wrap mt-4">
-              <div className="w-1/3 p-2">
+              <div className="w-1/3 p-2 md:w-full">
                 <img
                   src="https://saigontourist.net/uploads/destination/TrongNuoc/HaNam/HaNam-ChuaTamChuc_1831633072.jpg"
                   alt=""
                   className="duration-300 ease-in cursor-pointer hover:scale-[1.1]"
                 />
               </div>
-              <div className="w-1/3 p-2">
+              <div className="w-1/3 p-2 md:w-full">
                 <img
                   src="https://saigontourist.net/uploads/destination/TrongNuoc/HaNam/HaNam-ChuaTamChuc_1831633072.jpg"
                   alt=""
                   className="duration-300 ease-in cursor-pointer hover:scale-[1.1]"
                 />
               </div>
-              <div className="w-1/3 p-2">
+              <div className="w-1/3 p-2 md:w-full">
                 <img
                   src="https://saigontourist.net/uploads/destination/TrongNuoc/HaNam/HaNam-ChuaTamChuc_1831633072.jpg"
                   alt=""
                   className="duration-300 ease-in cursor-pointer hover:scale-[1.1]"
                 />
               </div>
-              <div className="w-1/3 p-2">
+              <div className="w-1/3 p-2 md:w-full">
                 <img
                   src="https://saigontourist.net/uploads/destination/TrongNuoc/HaNam/HaNam-ChuaTamChuc_1831633072.jpg"
                   alt=""
@@ -87,12 +87,10 @@ const Content = () => {
                 />
               </div>
             </div>
-            <div className="flex mt-6 text-base border-b border-b-black">
+            <div className="flex mt-6 text-base border-b border-b-black md:inline-block md:border-none md:w-full">
               <div
                 className={
-                  toggleState === 1
-                    ? "px-5 py-2 tabs-active"
-                    : " px-5 py-2 tabs"
+                  toggleState === 1 ? "px-5 py-2 tabs-active" : "px-5 py-2 tabs"
                 }
                 onClick={() => toggleTab(1)}
               >
@@ -108,9 +106,7 @@ const Content = () => {
               </div>
               <div
                 className={
-                  toggleState === 3
-                    ? "px-5 py-2 tabs-active"
-                    : " px-5 py-2 tabs"
+                  toggleState === 3 ? "px-5 py-2 tabs-active" : "px-5 py-2 tabs"
                 }
                 onClick={() => toggleTab(3)}
               >
@@ -157,8 +153,8 @@ const Content = () => {
               </div>
             </div>
           </div>
-          <div className="w-1/4">
-            <div className="m-3 border">
+          <div className="w-1/4 md:w-full md:mt-4">
+            <div className="m-3 border md:m-0 md:mt-4">
               <div className="p-4">
                 <h4 className="text-base font-bold text-primary">
                   Hỗ trợ khách hàng
@@ -225,7 +221,7 @@ const Content = () => {
                 </a>
               </div>
             </div>
-            <div className="m-3 border">
+            <div className="m-3 border md:m-0 md:mt-4">
               <div className="p-4">
                 <h4 className="text-base font-bold text-primary">
                   Vì sao nên mua tour online?

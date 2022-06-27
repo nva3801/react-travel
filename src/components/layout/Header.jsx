@@ -21,7 +21,7 @@ const Header = () => {
       }
     >
       <div className="container">
-        <div className="flex items-center justify-between h-full ">
+        <div className="flex items-center justify-between h-full md:mt-3">
           <NavLink to="/" className="max-h-[60px] w-[120px]">
             <img
               src="/logo.png"

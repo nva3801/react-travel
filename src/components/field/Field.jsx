@@ -1,8 +1,8 @@
 import React from "react";
 
-const Field = ({ children }) => {
+const Field = ({ children, className = "" }) => {
   return (
-    <div className="flex flex-col items-start gap-5 mb-10">{children}</div>
+    <div className={`flex flex-col items-start ${className}`}>{children}</div>
   );
 };
 
