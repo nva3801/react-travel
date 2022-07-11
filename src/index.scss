@@ -115,6 +115,14 @@ body {
   position: relative;
   cursor: pointer;
 }
+@media (max-width: 767px) {
+  .radio_active {
+    width: 100%;
+  }
+  .radio_hidden {
+    width: 100% !important;
+  }
+}
 .radio_hidden {
   background-color: #bfe2bf;
   color: black;

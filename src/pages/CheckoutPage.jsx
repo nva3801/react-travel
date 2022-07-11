@@ -1,4 +1,4 @@
-import { Header } from "../components/layout";
+import { Footer, Header } from "../components/layout";
 import React, { Fragment } from "react";
 import { Intro, Progress, Checkout } from "../modules/Checkout";
 
@@ -7,8 +7,9 @@ const CheckoutPage = () => {
     <Fragment>
       <Header></Header>
       <Intro></Intro>
-      <Progress></Progress>
+      {/* <Progress></Progress> */}
       <Checkout></Checkout>
+      <Footer></Footer>
     </Fragment>
   );
 };

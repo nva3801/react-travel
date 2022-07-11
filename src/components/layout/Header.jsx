@@ -1,5 +1,8 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { fetcher, link } from "../../config";
+import useSWR from "swr";
 
 const Header = () => {
   const [header, setHeader] = useState(false);
@@ -12,7 +15,18 @@ const Header = () => {
   };
   window.addEventListener("scroll", changeBackground);
   let [open, setOpen] = useState(false);
-  console.log(open);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getAllCategory();
+  }, []);
+
+  const getAllCategory = async () => {
+    const response = await axios.get(`${link}/index`);
+    setCategories(response.data.category);
+  };
+  const { data } = useSWR(`${link}/category-item`, fetcher);
+  const categoryItems = data?.category_list || [];
   return (
     <header
       className={
@@ -49,171 +63,60 @@ const Header = () => {
             }`}
           >
             <ul className="flex gap-8 font-bold uppercase md:block md:gap-2 md:flex-col">
-              <li>
-                <a
-                  href=""
-                  className="hover:border-b-2 hover:border-b-primary hover:pb-4"
-                >
-                  Trang chủ
-                </a>
-              </li>
-              <li>
-                <a
-                  href=""
-                  className="hover:border-b-2 hover:border-b-primary hover:pb-4"
-                >
-                  Giới thiệu
-                </a>
-              </li>
-              <li className="relative cursor-pointer dropdown">
-                <span className="hover:border-b-2 hover:border-b-primary hover:pb-4">
-                  Tour nội địa
-                </span>
-                <div className="dropdown-item">
-                  <div
-                    className={`absolute flex w-[520px] grid-cols-3 leading-8 text-black bg-white gap-x-5 px-5 py-3 rounded-lg ${
-                      header ? "top-[100%]" : "top-[80%]"
-                    } md:w-full md:grid-cols-1 md:block md:p-0 md:relative`}
+              {categories.map((item) =>
+                item.category_list == "" ? (
+                  <li key={item.id}>
+                    <NavLink
+                      to={`/${item.slug}`}
+                      className="hover:border-b-2 hover:border-b-primary hover:pb-4"
+                    >
+                      {item.title}
+                    </NavLink>
+                  </li>
+                ) : (
+                  <li
+                    className="relative cursor-pointer dropdown"
+                    key={item.id}
                   >
-                    <div className="flex flex-col w-1/3 md:w-full">
-                      <NavLink to="/category">Du lịch miền bắc</NavLink>
-                      <a
-                        href=""
-                        className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2"
+                    <span className="hover:border-b-2 hover:border-b-primary hover:pb-4">
+                      {item.title}
+                    </span>
+                    <div className="dropdown-item">
+                      <div
+                        className={`absolute flex w-[520px] grid-cols-3 leading-8 text-black bg-white gap-x-5 px-5 py-3 rounded-lg ${
+                          header ? "top-[100%]" : "top-[80%]"
+                        } md:w-full md:grid-cols-1 md:block md:p-0 md:relative`}
                       >
-                        Du lịch hà nội
-                      </a>
-                      <a
-                        href=""
-                        className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2"
-                      >
-                        Du lịch sapa
-                      </a>
-                      <a
-                        href=""
-                        className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2"
-                      >
-                        Du lịch hạ long
-                      </a>
+                        {item.category_list.map((item1) => (
+                          <div
+                            className="flex flex-col w-1/3 md:w-full"
+                            key={item1.id}
+                          >
+                            <span>{item1.title}</span>
+                            {categoryItems.map((item2) =>
+                              item1.slug == item2.slug ? (
+                                <div className="block" key={item2.id}>
+                                  {item2.category_item.map((item3) => (
+                                    <NavLink
+                                      to={`/category/${item3.slug}`}
+                                      className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2 block"
+                                      key={item3.id}
+                                    >
+                                      {item3.title}
+                                    </NavLink>
+                                  ))}
+                                </div>
+                              ) : (
+                                ""
+                              )
+                            )}
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    <div className="flex flex-col w-1/3 md:w-full">
-                      <a href="" className="">
-                        Du lịch miền trung
-                      </a>
-
-                      <a
-                        href=""
-                        className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2"
-                      >
-                        Du lịch đà nẵng
-                      </a>
-                      <a
-                        href=""
-                        className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2"
-                      >
-                        Du lịch phú yên
-                      </a>
-                    </div>
-                    <div className="flex flex-col w-1/3 md:w-full">
-                      <a href="" className="">
-                        Du lịch miền nam
-                      </a>
-                      <a
-                        href=""
-                        className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2"
-                      >
-                        Du lịch côn đảo
-                      </a>
-                      <a
-                        href=""
-                        className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2"
-                      >
-                        Du lịch phú quốc
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li className="relative cursor-pointer dropdown">
-                <span className="hover:border-b-2 hover:border-b-primary hover:pb-4">
-                  Tour nước ngoài
-                </span>
-                <div className="dropdown-item">
-                  <div
-                    className={`absolute flex w-[520px] grid-cols-3 leading-8 text-black bg-white gap-x-5 px-5 py-3 rounded-lg ${
-                      header ? "top-[100%]" : "top-[80%]"
-                    } md:w-full md:grid-cols-1 md:block md:p-0 md:relative`}
-                  >
-                    <div className="flex flex-col w-1/3 md:w-full">
-                      <a href="" className="">
-                        Du lịch châu á
-                      </a>
-                      <a
-                        href=""
-                        className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2"
-                      >
-                        Du lịch hàn quốc
-                      </a>
-                      <a
-                        href=""
-                        className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2"
-                      >
-                        Du lịch nhật bản
-                      </a>
-                    </div>
-                    <div className="flex flex-col w-1/3 md:w-full">
-                      <a href="" className="">
-                        Du lịch châu âu
-                      </a>
-                      <a
-                        href=""
-                        className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2"
-                      >
-                        Du lịch anh
-                      </a>
-                      <a
-                        href=""
-                        className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2"
-                      >
-                        Du lịch nga
-                      </a>
-                    </div>
-                    <div className="flex flex-col w-1/3 md:w-full">
-                      <a href="" className="">
-                        Du lịch châu mỹ
-                      </a>
-                      <a
-                        href=""
-                        className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2"
-                      >
-                        Du lịch canada
-                      </a>
-                      <a
-                        href=""
-                        className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2"
-                      >
-                        Du lịch mỹ
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <a
-                  href=""
-                  className="hover:border-b-2 hover:border-b-primary hover:pb-4"
-                >
-                  Tin tức
-                </a>
-              </li>
-              <li>
-                <a
-                  href=""
-                  className="hover:border-b-2 hover:border-b-primary hover:pb-4"
-                >
-                  Liên hệ
-                </a>
-              </li>
+                  </li>
+                )
+              )}
               <li
                 className={`bg-primary p-1 h-[32px] ${
                   header ? "mt-[13px]" : "mt-[38px] md:mt-[20px]"

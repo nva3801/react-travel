@@ -6,31 +6,40 @@ import CategoryPage from "./pages/CategoryPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProductPage from "./pages/ProductPage";
 import CheckoutPage from "./pages/CheckoutPage";
-import DashboardPage from "./pages/DashboardPage";
-import DashboardLayout from "./modules/Dashboard/DashboardLayout";
-import CategoryManage from "./modules/Category/CategoryManage";
+import NewsPage from "./pages/NewsPage";
+import NewsDetailPage from "./pages/NewsDetailPage";
+import CheckoutDonePage from "./pages/CheckoutDonePage";
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path="/" element={<HomePage></HomePage>}></Route>
+        <Route path="/trang-chu" element={<HomePage></HomePage>}></Route>
         <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>
         <Route path="/sign-in" element={<SignInPage></SignInPage>}></Route>
-        <Route path="/category" element={<CategoryPage></CategoryPage>}></Route>
-        <Route path="/product" element={<ProductPage></ProductPage>}></Route>
-        <Route path="/checkout" element={<CheckoutPage></CheckoutPage>}></Route>
+        <Route
+          path="/category/:slug"
+          element={<CategoryPage></CategoryPage>}
+        ></Route>
+        <Route
+          path="/product/:slug"
+          element={<ProductPage></ProductPage>}
+        ></Route>
+        <Route
+          path="/checkout/:tour_code"
+          element={<CheckoutPage></CheckoutPage>}
+        ></Route>
+        <Route path="/tin-tuc" element={<NewsPage></NewsPage>}></Route>
+        <Route
+          path="/tin-tuc/:slug"
+          element={<NewsDetailPage></NewsDetailPage>}
+        ></Route>
+        <Route
+          path="/checkout-done"
+          element={<CheckoutDonePage></CheckoutDonePage>}
+        ></Route>
         <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
-        <Route element={<DashboardLayout></DashboardLayout>}>
-          <Route
-            path="/dashboard"
-            element={<DashboardPage></DashboardPage>}
-          ></Route>
-          <Route
-            path="/manage/category"
-            element={<CategoryManage></CategoryManage>}
-          ></Route>
-        </Route>
       </Routes>
     </div>
   );

@@ -19,9 +19,9 @@ const Footer = () => {
                     alt=""
                     className="w-[120px] object-cover sm:w-full"
                   />
-                  <span>319 - C16 Lý Thường Kiệt, Q.11, HCM</span>
-                  <span>0126 922 0162</span>
-                  <span>demonhunter@gmail.com</span>
+                  <span>Cổ Nhuế, Bắc Từ Liêm, Hà Nội</span>
+                  <span>0966093801</span>
+                  <span>nva030801@gmail.com</span>
                 </div>
                 <div className="flex w-1/2 sm:w-full sm:flex sm:mt-5">
                   <div className="flex flex-col w-1/2 gap-1">
