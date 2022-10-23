@@ -5,8 +5,8 @@ import { fetcher, link, linkStorage } from "../../config";
 
 const Intro = () => {
   const { slug } = useParams();
-  const { data } = useSWR(`${link}/category/${slug}`, fetcher);
-  const category = data?.category || [];
+  const { data } = useSWR(`${link}/category-item/${slug}`, fetcher);
+  const category = data || [];
 
   return (
     <section className="intro">

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { fetcher, link } from "../../config";
 import useSWR from "swr";
 
@@ -22,11 +22,11 @@ const Header = () => {
   }, []);
 
   const getAllCategory = async () => {
-    const response = await axios.get(`${link}/index`);
-    setCategories(response.data.category);
+      const response = await axios.get(`${link}/category`);
+    setCategories(response.data);
   };
-  const { data } = useSWR(`${link}/category-item`, fetcher);
-  const categoryItems = data?.category_list || [];
+  const { data } = useSWR(`${link}/category-list`, fetcher);
+  const categoryItems = data || [];
   return (
     <header
       className={
@@ -63,58 +63,44 @@ const Header = () => {
             }`}
           >
             <ul className="flex gap-8 font-bold uppercase md:block md:gap-2 md:flex-col">
-              {categories.map((item) =>
-                item.category_list == "" ? (
-                  <li key={item.id}>
-                    <NavLink
-                      to={`/${item.slug}`}
-                      className="hover:border-b-2 hover:border-b-primary hover:pb-4"
-                    >
-                      {item.title}
-                    </NavLink>
-                  </li>
-                ) : (
-                  <li
-                    className="relative cursor-pointer dropdown"
-                    key={item.id}
-                  >
-                    <span className="hover:border-b-2 hover:border-b-primary hover:pb-4">
-                      {item.title}
-                    </span>
-                    <div className="dropdown-item">
-                      <div
+              {categories.map(item =>
+                item.categoryList?.length > 0 ? (<li className="relative cursor-pointer dropdown" key={item._id}>
+                  <span className="hover:border-b-2 hover:border-b-primary hover:pb-4">
+                    {item.title}
+                  </span>
+                  <div className="dropdown-item">
+                    <div
                         className={`absolute flex w-[520px] grid-cols-3 leading-8 text-black bg-white gap-x-5 px-5 py-3 rounded-lg ${
-                          header ? "top-[100%]" : "top-[80%]"
+                            header ? "top-[100%]" : "top-[80%]"
                         } md:w-full md:grid-cols-1 md:block md:p-0 md:relative`}
-                      >
-                        {item.category_list.map((item1) => (
-                          <div
-                            className="flex flex-col w-1/3 md:w-full"
-                            key={item1.id}
-                          >
-                            <span>{item1.title}</span>
-                            {categoryItems.map((item2) =>
-                              item1.slug == item2.slug ? (
-                                <div className="block" key={item2.id}>
-                                  {item2.category_item.map((item3) => (
-                                    <NavLink
-                                      to={`/category/${item3.slug}`}
-                                      className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2 block"
-                                      key={item3.id}
-                                    >
-                                      {item3.title}
-                                    </NavLink>
-                                  ))}
-                                </div>
-                              ) : (
-                                ""
-                              )
-                            )}
-                          </div>
-                        ))}
-                      </div>
+                    >
+                      {item.categoryList.map((item1) => (
+                        <div className="flex flex-col w-1/3 md:w-full" key={item1._id}>
+                          <span>{item1.title}</span>
+                          {categoryItems.map((item2) =>
+                            item1.slug === item2.slug ? (
+                              <div className="block" key={item2.id}>
+                                {item2.categoryItem.map((item3) => (
+                                  <NavLink
+                                    to={`/category/${item3.slug}`}
+                                    className="text-[#ccc] hover:bg-[#ccc] hover:text-black hover:rounded-lg hover:px-2 block"
+                                    key={item3.id}
+                                  >
+                                    {item3.title}
+                                  </NavLink>
+                                ))}
+                              </div>
+                            ) : (
+                              "")
+                         )}
+                        </div>
+                      ))}
                     </div>
-                  </li>
+                  </div>
+                </li>) : (
+                    <li key={item._id}>
+                      <NavLink to={`/${item.slug}`} className="hover:border-b-2 hover:border-b-primary hover:pb-4">{item.title}</NavLink>
+                    </li>
                 )
               )}
               <li
