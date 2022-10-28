@@ -19,12 +19,12 @@ const Checkout = () => {
   const [total, setTotal] = useState(0);
 
   const { tour_code } = useParams();
-  const { data } = useSWR(`${link}/checkout/${tour_code}`, fetcher);
-  const checkout = data?.checkout || [];
+  const { data } = useSWR(`${link}/list/checkout/${tour_code}`, fetcher);
+  const checkout = data || [];
 
   const store = async (e) => {
     e.preventDefault();
-    await axios.post("http://127.0.0.1:8000/api/checkout-store", {
+    await axios.post(`${link}/list/checkout-store`, {
       tour_code: tour_code,
       number_adult: numberAdult,
       number_children: numberChildren,
@@ -264,16 +264,16 @@ const Checkout = () => {
                 Hỗ trợ giao dịch <span className="font-bold">1900 1808</span>
               </a>
             </div>
-            {checkout.map((item) => (
-              <div className="border rounded-lg" key={item.id}>
+              {checkout.map((item) => (
+              <div className="border rounded-lg" key={item._id}>
                 <img
-                  src={`${linkStorage}/${item.product.image}`}
+                  src={`${linkStorage}/${item.product_id.image}`}
                   alt=""
                   className="rounded-t-lg"
                 />
                 <div className="flex flex-col gap-2 px-3 my-5">
                   <h4 className="text-[#23527c] text-lg">
-                    {item.product.title}
+                    {item.product_id.title}
                   </h4>
                   <div className="flex items-center gap-1 text-base">
                     <span>
@@ -335,7 +335,7 @@ const Checkout = () => {
                       </svg>
                     </span>
                     <span>Thời gian:</span>
-                    <span className="font-semibold">{item.product.time}</span>
+                    <span className="font-semibold">{item.product_id.time}</span>
                   </div>
                   <div className="flex items-center gap-1 text-base">
                     <span>
