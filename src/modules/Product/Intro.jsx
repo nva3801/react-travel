@@ -6,7 +6,7 @@ import { fetcher, link, linkStorage } from "../../config";
 const Intro = () => {
   const { slug } = useParams();
   const { data } = useSWR(`${link}/product/${slug}`, fetcher);
-  const product = data?.product || [];
+  const product = data || [];
   return (
     <section className="intro">
       {product.map((item) => (

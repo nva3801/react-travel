@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import useSWR from "swr";
 import { fetcher, link, linkStorage } from "../../config";
@@ -11,7 +11,7 @@ const Content = () => {
   };
   const { slug } = useParams();
   const { data } = useSWR(`${link}/product/${slug}`, fetcher);
-  const product = data?.product || [];
+  const product = data || [];
   return (
     <section className="content">
       <div className="container">
@@ -37,7 +37,7 @@ const Content = () => {
                     <span className="font-bold">{item.destination}</span>
                   </div>
                 </div>
-                {item.tour_code.length > 0 ? (
+                {item.tourCode.length > 0 ? (
                   <div className="bg-[#ffeddf] p-3 text-base md:rounded-lg">
                     <div className="flex justify-between w-full border-b-2 border-black md:hidden">
                       <div className="w-1/6">Ngày Đi</div>
@@ -47,7 +47,7 @@ const Content = () => {
                       <div className="w-1/6">Giá Em Bé</div>
                       <div className="w-1/6"></div>
                     </div>
-                    {item.tour_code.map((item2) => (
+                    {item.tourCode.map((item2) => (
                       <div className="md:mb-5" key={item2.id}>
                         <div className="flex items-center justify-between w-full my-2 font-bold md:flex-col md:items-start md:gap-3">
                           <div className="flex w-1/6 gap-3 md:w-full">
@@ -109,7 +109,7 @@ const Content = () => {
                     }}
                   ></div>
                   <a
-                    href=""
+                    href=" #"
                     className="flex items-center px-4 py-2 text-white rounded-lg bg-primary w-fit gap-x-2"
                   >
                     <div>In chương trình tour</div>
@@ -131,11 +131,11 @@ const Content = () => {
                     </span>
                   </a>
                 </div>
-                {item.product_image.map((item1) => (
+                {item.productImage.map((item1) => (
                   <div className="flex flex-wrap mt-4" key={item1.id}>
                     <div className="w-1/3 p-2 md:w-full">
                       <img
-                        src={`${linkStorage}/${item1.image1}`}
+                        src={`${linkStorage}/${item1.image}`}
                         alt=""
                         className="duration-300 ease-in cursor-pointer hover:scale-[1.1]"
                       />
@@ -253,7 +253,7 @@ const Content = () => {
                     <h4 className="text-base font-bold text-primary">
                       Hỗ trợ khách hàng
                     </h4>
-                    <a href="" className="flex items-center p-2 gap-x-2">
+                    <a href=" #" className="flex items-center p-2 gap-x-2">
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -272,7 +272,7 @@ const Content = () => {
                       </span>
                       <span>096.609.3801</span>
                     </a>
-                    <a href="" className="flex items-center p-2 gap-x-2">
+                    <a href=" #" className="flex items-center p-2 gap-x-2">
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -292,7 +292,7 @@ const Content = () => {
                       <span>nva030801@gmail.com</span>
                     </a>
                     <a
-                      href=""
+                      href=" #"
                       className="flex items-center w-full px-3 py-2 text-center text-white rounded-lg gap-x-1 bg-primary"
                     >
                       <span>
@@ -321,11 +321,11 @@ const Content = () => {
                       Vì sao nên mua tour online?
                     </h4>
                     <div className="flex flex-col gap-3 pl-3 mt-2">
-                      <a href="">An toàn và bảo mật</a>
-                      <a href="">Tiện lợi, tiết kiệm thời gian</a>
-                      <a href="">Không tính phí giao dịch</a>
-                      <a href="">Dịch vụ bảo đảm</a>
-                      <a href="">Nhận thêm ưu đãi</a>
+                      <a href=" #">An toàn và bảo mật</a>
+                      <a href=" #">Tiện lợi, tiết kiệm thời gian</a>
+                      <a href=" #">Không tính phí giao dịch</a>
+                      <a href=" #">Dịch vụ bảo đảm</a>
+                      <a href=" #">Nhận thêm ưu đãi</a>
                     </div>
                   </div>
                 </div>
