@@ -1,72 +1,107 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { Field } from "../components/field";
-import { Label } from "../components/label";
-import { Input, InputPasswordToggle } from "../components/input";
-import { useForm } from "react-hook-form";
-import Button from "../components/button/Button";
+import React, { useState } from 'react';
+import { NavLink, useNavigate } from "react-router-dom";
+import { Field } from '../components/field';
+import { Label } from '../components/label';
+import { InputPasswordToggle, Input } from '../components/input';
+import { Button } from '../components/button';
+import axios from "axios";
+import {useFormik} from "formik";
+import * as Yup from "yup";
+
 
 const SignUpPage = () => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors, isValid, isSubmitting },
-  } = useForm({ mode: "onChange" });
-  const handleSignUp = (values) => {
-    if (!isValid) return;
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        console.log(values);
-        resolve();
-      }, 5000);
-    });
-  };
-  return (
-    <div className="h-[100vh] flex items-center justify-center flex-col md:px-5">
-      <div className="max-w-[700px] mx-auto text-center">
-        <form onSubmit={handleSubmit(handleSignUp)}>
-          <NavLink to="/" className="w-full">
-            <img src="logo.png" alt="" className="w-[50%] mx-auto" />
-          </NavLink>
-          <Field>
-            <Label htmlFor="fullname">Fullname</Label>
-            <Input
-              control={control}
-              name="fullname"
-              placeholder="Enter your fullname"
-            ></Input>
-          </Field>
-          <Field>
-            <Label htmlFor="email">Email</Label>
-            <Input
-              type="email"
-              control={control}
-              name="email"
-              placeholder="Enter your email"
-            ></Input>
-          </Field>
-          <Field>
-            <Label htmlFor="password">Password</Label>
-            <InputPasswordToggle control={control}></InputPasswordToggle>
-          </Field>
-          <div className="flex items-start mb-5 gap-x-2">
-            Bạn đã có tài khoản?
-            <NavLink to="/sign-in" className="text-primary">
-              Đăng nhập
+  const [showError, setShowError] = useState("");
+  const navigate = useNavigate();
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      email: "",
+      password: ""
+    },
+    validationSchema: Yup.object({
+      username: Yup.string().required("Bạn vui lòng nhập Username").max(50, "Hệ thống hiện tại chỉ cho nhập max 50 ký tự").min(6, "Vui lòng nhập ít nhất 6 kí tự").matches(/^(\S+$)/g, 'Bạn không thể nhập khoảng trắng'),
+      email: Yup.string().required("Bạn vui lòng nhập Email").email("Email không hợp lệ").max(50, "Hệ thống hiện tại chỉ cho nhập max 50 ký tự"),
+      password: Yup.string().required("Bạn vui lòng nhập Password").min(6, "Vui lòng nhập ít nhất 6 kí tự").max(50, "Hệ thống hiện tại chỉ cho nhập max 50 ký tự").matches(/^(\S+$)/g, 'Bạn không thể nhập khoảng trắng')
+    }),
+    onSubmit: (values) => {
+      axios.post("http://localhost:8000/v1/auth/register", values)
+          .then(res => {
+            navigate("/dang-nhap");
+          })
+          .catch(err => {
+            setShowError(err.response);
+          })
+    }
+  });
+
+    return (
+        <div className="h-[100vh] flex items-center justify-center flex-col md:px-5">
+        <div className="max-w-[700px] mx-auto text-center">
+          <form onSubmit={formik.handleSubmit}>
+            <NavLink to="/" className="w-full">
+              <img
+                  src="/logo.png"
+                  alt=""
+                  className="object-cover w-full h-full block mx-auto my-0 md:h-[40px] md:w-[120px] md:object-cover"/>
             </NavLink>
-          </div>
-          <Button
-            type="submit"
-            className="h-[66px] w-full"
-            isLoading={isSubmitting}
-            disabled={isSubmitting}
-          >
-            Sign Up
-          </Button>
-        </form>
+            <Field>
+              <Label htmlFor="username">Username</Label>
+              <Input
+                  type="text"
+                  name="username"
+                  placeholder="Enter your Username"
+                  onChange={formik.handleChange}
+                  value = {formik.values.username}
+              ></Input>
+              {formik.errors.username && (
+                  <p className='text-red-500'>{formik.errors.username}</p>
+              )}
+            </Field>
+            <Field>
+              <Label htmlFor="email">Email</Label>
+              <Input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  onChange={formik.handleChange}
+                  value = {formik.values.email}
+              ></Input>
+              {formik.errors.email && (
+                  <p className='text-red-500'>{formik.errors.email}</p>
+              )}
+            </Field>
+            <Field>
+              <Label htmlFor="password">Password</Label>
+              <InputPasswordToggle
+                  onChange={formik.handleChange}
+                  value = {formik.values.password}>
+              </InputPasswordToggle>
+              {formik.errors.password && (
+                  <p className='text-red-500'>{formik.errors.password}</p>
+              )}
+            </Field>
+            {formik.errors && (
+                <span className='text-red-500'>{showError.data}</span>
+            )}
+            <div className="flex items-start pt-3 mb-5 gap-x-2">
+              Bạn đã có tài khoản?
+              <NavLink to="/sign-in" className="text-green-500">
+                Đăng nhập
+              </NavLink>
+            </div>
+            {formik.errors.email == null && formik.errors.password == null && formik.errors.username == null ?
+                (<Button type="submit" className="w-full" >
+                  Sign Up
+                </Button>)
+                :
+                (<Button type="submit" className="w-full" disabled>
+                  Sign Up
+                </Button>)
+            }
+          </form>
+        </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default SignUpPage;

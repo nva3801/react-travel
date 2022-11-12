@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { fetcher, link } from "../../config";
 import useSWR from "swr";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [header, setHeader] = useState(false);
+  const [dropdownMenu, setDropdownMenu] = useState(false);
   const changeBackground = () => {
     if (window.scrollY >= 80) {
       setHeader(true);
@@ -27,6 +29,20 @@ const Header = () => {
   };
   const { data } = useSWR(`${link}/category-list`, fetcher);
   const categoryItems = data || [];
+
+  const username = localStorage.getItem("username");
+  const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    localStorage.removeItem("role")
+    navigate("/");
+  }
+  const handleClick = () => {
+    window.location.assign('http://localhost:8080/')
+  }
   return (
     <header
       className={
@@ -92,7 +108,7 @@ const Header = () => {
                               </div>
                             ) : (
                               "")
-                         )}
+                          )}
                         </div>
                       ))}
                     </div>
@@ -124,6 +140,32 @@ const Header = () => {
                     />
                   </svg>
                 </span>
+              </li>
+              <li>
+                {username != null && token != null ? (
+                  <div>
+                    <span className='pt-2 pr-4 text-green-400'>{username}</span>
+                    <div className="inline-flex bg-white border rounded-md" onClick={() => setDropdownMenu(!dropdownMenu)}>
+                        <a href="# " className="px-4 py-2 text-sm text-gray-600 hover:text-gray-700 hover:bg-gray-50 rounded-l-md" >
+                            Menu
+                        </a>
+                        <div className={`${dropdownMenu ? `top-full opacity-100 visible` : 'top-[110%] invisible opacity-0'} relative transition-all`}>
+                            <div className="absolute right-0 z-10 w-56 mt-3 origin-top-right bg-white border border-gray-100 rounded-md shadow-lg cursor-pointer top-[35px] py-2">
+                                {role === 'true' ? (
+                                  <div className="px-2 py-1">
+                                    <div onClick={() => handleClick()} className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700">Quản lý</div>
+                                  </div>
+                                ) : ("")}
+                                <div className="px-2 py-1">
+                                    <div className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700" onClick={() => handleLogout()}>Logout</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                ) : (
+                  <NavLink to={`dang-nhap`} className="hover:border-b-2 hover:border-b-primary hover:pb-4">Đăng nhập</NavLink>
+                )}
               </li>
             </ul>
           </div>

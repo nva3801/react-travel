@@ -5,12 +5,12 @@ import useSWR from "swr";
 import { fetcher, link, linkStorage } from "../../config";
 
 function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
+  const { className, onClick } = props;
   return <div className={`${className} md:hidden`} onClick={onClick} />;
 }
 
 function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
+  const { className, onClick } = props;
   return <div className={`${className} md:hidden`} onClick={onClick} />;
 }
 const Popular = () => {

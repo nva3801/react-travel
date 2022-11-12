@@ -16,8 +16,6 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage></HomePage>}></Route>
         <Route path="/trang-chu" element={<HomePage></HomePage>}></Route>
-        <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>
-        <Route path="/sign-in" element={<SignInPage></SignInPage>}></Route>
         <Route
           path="/category/:slug"
           element={<CategoryPage></CategoryPage>}
@@ -39,6 +37,8 @@ function App() {
           path="/checkout-done"
           element={<CheckoutDonePage></CheckoutDonePage>}
         ></Route>
+        <Route path="/dang-nhap" element={<SignInPage></SignInPage>}></Route>
+        <Route path="/dang-ky" element={<SignUpPage></SignUpPage>}></Route>
         <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
       </Routes>
     </div>

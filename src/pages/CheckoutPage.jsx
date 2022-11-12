@@ -1,6 +1,6 @@
 import { Footer, Header } from "../components/layout";
 import React, { Fragment } from "react";
-import { Intro, Progress, Checkout } from "../modules/Checkout";
+import { Intro, Checkout } from "../modules/Checkout";
 
 const CheckoutPage = () => {
   return (

@@ -28,19 +28,19 @@ const Footer = () => {
                     <h1 className="text-lg font-bold capitalize">Tin tức</h1>
                     <ul>
                       <li className="py-2 text-sm">
-                        <a href="">Bản tin Du Lịch Việt</a>
+                        <a href=" ">Bản tin Du Lịch Việt</a>
                       </li>
                       <li className="py-2 text-sm">
-                        <a href="">Khám phá du lịch</a>
+                        <a href=" ">Khám phá du lịch</a>
                       </li>
                       <li className="py-2 text-sm">
-                        <a href="">Kinh nghiệm du lịch</a>
+                        <a href=" ">Kinh nghiệm du lịch</a>
                       </li>
                       <li className="py-2 text-sm">
-                        <a href="">Sự kiện du lịch</a>
+                        <a href=" ">Sự kiện du lịch</a>
                       </li>
                       <li className="py-2 text-sm">
-                        <a href="">Tuyển dụng Du Lịch</a>
+                        <a href=" ">Tuyển dụng Du Lịch</a>
                       </li>
                     </ul>
                   </div>
@@ -48,19 +48,19 @@ const Footer = () => {
                     <h1 className="text-lg font-bold capitalize">Menu</h1>
                     <ul>
                       <li className="py-2 text-sm">
-                        <a href="">Bản tin Du Lịch Việt</a>
+                        <a href=" ">Bản tin Du Lịch Việt</a>
                       </li>
                       <li className="py-2 text-sm">
-                        <a href="">Khám phá du lịch</a>
+                        <a href=" ">Khám phá du lịch</a>
                       </li>
                       <li className="py-2 text-sm">
-                        <a href="">Kinh nghiệm du lịch</a>
+                        <a href=" ">Kinh nghiệm du lịch</a>
                       </li>
                       <li className="py-2 text-sm">
-                        <a href="">Sự kiện du lịch</a>
+                        <a href=" ">Sự kiện du lịch</a>
                       </li>
                       <li className="py-2 text-sm">
-                        <a href="">Tuyển dụng Du Lịch</a>
+                        <a href=" ">Tuyển dụng Du Lịch</a>
                       </li>
                     </ul>
                   </div>

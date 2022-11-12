@@ -17,7 +17,7 @@ const Button = ({
         <button
           type={type}
           {...props}
-          className={`px-6 text-base font-semibold leading-none rounded-lg cursor-pointer ${className} flex justify-center items-center disabled:opacity-50 disabled:pointer-events-none bg-primary text-white`}
+          className={`px-6 text-base font-semibold leading-none rounded-lg cursor-pointer ${className} flex justify-center items-center disabled:opacity-50 disabled:pointer-events-none bg-primary`}
         >
           {child}
         </button>
@@ -28,7 +28,7 @@ const Button = ({
     <button
       type={type}
       onClick={onClick}
-      className={`px-6 text-base font-semibold leading-none rounded-lg cursor-pointer ${className} flex justify-center items-center disabled:opacity-50 disabled:pointer-events-none bg-primary text-white`}
+      className={`px-5 py-4 text-center text-base font-semibold leading-none rounded-lg cursor-pointer ${className} flex justify-center items-center disabled:opacity-50 disabled:pointer-events-none bg-green-500 text-white`}
       {...props}
     >
       {child}

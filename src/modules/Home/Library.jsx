@@ -41,12 +41,12 @@ const data = [
 ];
 
 function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
+  const { className, onClick } = props;
   return <div className={`${className} md:hidden`} onClick={onClick} />;
 }
 
 function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
+  const { className, onClick } = props;
   return <div className={`${className} md:hidden`} onClick={onClick} />;
 }
 
