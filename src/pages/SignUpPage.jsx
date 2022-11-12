@@ -85,7 +85,7 @@ const SignUpPage = () => {
             )}
             <div className="flex items-start pt-3 mb-5 gap-x-2">
               Bạn đã có tài khoản?
-              <NavLink to="/sign-in" className="text-green-500">
+              <NavLink to="/dang-nhap" className="text-green-500">
                 Đăng nhập
               </NavLink>
             </div>

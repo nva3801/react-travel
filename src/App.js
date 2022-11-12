@@ -9,6 +9,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import NewsPage from "./pages/NewsPage";
 import NewsDetailPage from "./pages/NewsDetailPage";
 import CheckoutDonePage from "./pages/CheckoutDonePage";
+import OrderManagement from './pages/OrderManagement';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         ></Route>
         <Route path="/dang-nhap" element={<SignInPage></SignInPage>}></Route>
         <Route path="/dang-ky" element={<SignUpPage></SignUpPage>}></Route>
+        <Route path="/order-management" element={<OrderManagement></OrderManagement>}></Route>
         <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
       </Routes>
     </div>

@@ -26,6 +26,7 @@ const SignInPage = () => {
         localStorage.setItem("token", res.data.accessToken);
         localStorage.setItem("username", res.data.username);
         localStorage.setItem("role", res.data.admin);
+        localStorage.setItem("email", res.data.email);
         navigate("/");
       })
       .catch(err => {
